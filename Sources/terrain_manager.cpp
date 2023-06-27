@@ -14,6 +14,19 @@ TerrainManager* TerrainManager::getInstance()
 TerrainManager::TerrainManager()
 {
     terrain_shader_ptr = new Shader(TERRAIN_VERTEX_SHADER, TERRAIN_FRAGMENT_SHADER);
+
+    texture_grass = new Texture("../resources/textures/grass.jpg", GL_TEXTURE_2D);
+    UniformID1 = glGetUniformLocation(terrain_shader_ptr->ID, "grassTex");
+    std::cout << "Uniform " << UniformID1 << std::endl;
+
+    texture_stone = new Texture("../resources/textures/stone.jpg", GL_TEXTURE_2D);
+    UniformID2 = glGetUniformLocation(terrain_shader_ptr->ID, "stoneTex");
+    std::cout << "Uniform " << UniformID2 << std::endl;
+
+    texture_water = new Texture("../resources/textures/water.jpg", GL_TEXTURE_2D);
+    UniformID3 = glGetUniformLocation(terrain_shader_ptr->ID, "waterTex");
+    std::cout << "Uniform " << UniformID3 << std::endl;
+    
     for (int i = 0; i < NUM_TERRAINS; i++)
     {
         terrains[i] = new Terrain(GRID_SIZE_X, GRID_SIZE_Z);
@@ -44,6 +57,10 @@ void TerrainManager::draw(const glm::vec3& camera_pos, const glm::mat4& view, co
 
     terrain_shader_ptr->setMat4("projection", projection);
     terrain_shader_ptr->setMat4("view", view);
+
+    glUniform1i(UniformID1, 0);
+    glUniform1i(UniformID2, 1);
+    glUniform1i(UniformID3, 2);
 
     // TODO: clean this part 
     for (int i = 0; i < NUM_TERRAINS_SQRT; i++)
@@ -76,6 +93,16 @@ void TerrainManager::draw(const glm::vec3& camera_pos, const glm::mat4& view, co
             model = glm::translate(model, glm::vec3(x_trans, 0, z_trans));
 
             terrain_shader_ptr->setMat4("model", model);
+
+            glActiveTexture(GL_TEXTURE0 + 0);
+            glBindTexture(GL_TEXTURE_2D, texture_grass->ID);
+
+            glActiveTexture(GL_TEXTURE0 + 1);
+            glBindTexture(GL_TEXTURE_2D, texture_stone->ID);
+
+            glActiveTexture(GL_TEXTURE0 + 2);
+            glBindTexture(GL_TEXTURE_2D, texture_water->ID);
+
             glDrawElements(GL_TRIANGLES, terrains[terrain_idx]->getIndices().size() * sizeof(unsigned int), GL_UNSIGNED_INT, 0);
 
         }
@@ -109,8 +136,11 @@ void TerrainManager::updateBuffer(Terrain* terrain, float x, float z, unsigned i
     glBindBuffer(GL_ARRAY_BUFFER, terrain_VBOs[2]);
     glBufferData(GL_ARRAY_BUFFER, terrain_normals.size() * sizeof(float), &terrain_normals.front(), GL_STATIC_DRAW);
 
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    // Do the same as above but for textures
+    glBindBuffer(GL_ARRAY_BUFFER, terrain_VBOs[3]);
+    glBufferData(GL_ARRAY_BUFFER, terrain_vertices.size() * sizeof(float), &terrain_vertices.front(), GL_STATIC_DRAW);
 
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
 void TerrainManager::setupRender(Terrain* terrain, unsigned int& terrain_VAOs, unsigned int* terrain_VBOs, unsigned int& EBO)
@@ -159,5 +189,4 @@ void TerrainManager::setupRender(Terrain* terrain, unsigned int& terrain_VAOs, u
     glEnableVertexAttribArray(2);
 
     glBindBuffer(GL_ARRAY_BUFFER, 0);
-
 }

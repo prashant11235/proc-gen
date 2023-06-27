@@ -62,12 +62,12 @@ Skybox::Skybox()
 
     skybox_faces =
     {
-        "resources/skybox/right.jpg",
-        "resources/skybox/left.jpg",
-        "resources/skybox/top.jpg",
-        "resources/skybox/bottom.jpg",
-        "resources/skybox/front.jpg",
-        "resources/skybox/back.jpg"
+        "../resources/skybox/daymap/right.jpg",
+        "../resources/skybox/daymap/left.jpg",
+        "../resources/skybox/daymap/top.jpg",
+        "../resources/skybox/daymap/bottom.jpg",
+        "../resources/skybox/daymap/front.jpg",
+        "../resources/skybox/daymap/back.jpg"
     };
 
     loadCubemap();

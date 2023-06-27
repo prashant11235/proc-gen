@@ -5,6 +5,7 @@
 
 #include "shader.h"
 #include "terrain.h"
+#include "texture.h"
 
 #include <iostream>
 
@@ -47,6 +48,12 @@ private:
 
     // Shader 
     Shader* terrain_shader_ptr;
+    Texture* texture_grass;
+    Texture* texture_stone;
+    Texture* texture_water;
+
+    int UniformID1, UniformID2, UniformID3;
+
     const char* TERRAIN_VERTEX_SHADER = "terrain.vs";
     const char* TERRAIN_FRAGMENT_SHADER = "terrain.fs";
 

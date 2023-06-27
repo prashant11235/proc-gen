@@ -31,8 +31,8 @@ private:
     GLFWwindow* window;
 
     // Window constants 
-    const unsigned int WINDOW_WIDTH = 800;
-    const unsigned int WINDOW_HEIGHT = 600;
+    const unsigned int WINDOW_WIDTH = 1440;
+    const unsigned int WINDOW_HEIGHT = 1080;
     const char* WINDOW_TITLE = "Terrain Generator";
 
 

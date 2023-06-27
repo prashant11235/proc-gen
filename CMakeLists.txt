@@ -35,7 +35,7 @@ add_library(imgui
         "${IMGUI_INCLUDE_DIR}/backends/imgui_impl_glfw.h"
         "${IMGUI_INCLUDE_DIR}/backends/imgui_impl_glfw.cpp"
         "${IMGUI_INCLUDE_DIR}/backends/imgui_impl_opengl3.h"
-        "${IMGUI_INCLUDE_DIR}/backends/imgui_impl_opengl3.cpp")
+        "${IMGUI_INCLUDE_DIR}/backends/imgui_impl_opengl3.cpp" )
 
 if(MSVC)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4")
@@ -80,7 +80,8 @@ add_definitions(-DGLFW_INCLUDE_NONE
                 -DPROJECT_SOURCE_DIR=\"${PROJECT_SOURCE_DIR}\")
 add_executable(${PROJECT_NAME} ${PROJECT_SOURCES} ${PROJECT_HEADERS}
                                ${PROJECT_SHADERS} ${PROJECT_CONFIGS}
-                               ${VENDORS_SOURCES})
+                               ${VENDORS_SOURCES} )
+
 target_link_libraries(${PROJECT_NAME} assimp glfw imgui
                       ${GLFW_LIBRARIES} ${GLAD_LIBRARIES}
                       BulletDynamics BulletCollision LinearMath)

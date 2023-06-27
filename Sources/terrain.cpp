@@ -69,7 +69,6 @@ void Terrain::generateColourAt(float y_)
         colours.push_back(0.502f);
         colours.push_back(1.00f);
     }
-
     else if (y_ < SAND_LEVEL)
     {
         colours.push_back(0.941f);
@@ -105,7 +104,6 @@ void Terrain::generateColourAt(float y_)
         colours.push_back(1.00f);
         colours.push_back(1.00f);
     }
-
 }
 
 int Terrain::getGridSizeX()

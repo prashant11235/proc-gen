@@ -39,7 +39,7 @@ int Window::init()
     glfwSetCursorPosCallback(window, mouse_callback);
 
     // Enable mouse use 
-    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    //glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
     {
