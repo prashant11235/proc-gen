@@ -14,3 +14,12 @@ Todo Features:
 - fly-by mode
 - adaptive texture noise controls
 - controls-panel
+
+Dependencies:
+- GLAD - OpenGL
+- GLFW - Windowing
+- DearImGui - GUI controls
+- glm - Math
+- stb - Image loading
+- assimp - Asset importer
+- bullet3 - Physics
