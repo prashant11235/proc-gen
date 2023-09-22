@@ -125,27 +125,27 @@ void Window::processInput(GLFWwindow* window)
 
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
     {
-        camera.ProcessKeyboard(FORWARD, delta_time);
+        camera.ProcessKeyboard(Camera_Movement::FORWARD, delta_time);
     }
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
     {
-        camera.ProcessKeyboard(BACKWARD, delta_time);
+        camera.ProcessKeyboard(Camera_Movement::BACKWARD, delta_time);
     }
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
     {
-        camera.ProcessKeyboard(LEFT, delta_time);
+        camera.ProcessKeyboard(Camera_Movement::LEFT, delta_time);
     }
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
     {
-        camera.ProcessKeyboard(RIGHT, delta_time);
+        camera.ProcessKeyboard(Camera_Movement::RIGHT, delta_time);
     }
     if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS)
     {
-        camera.ProcessKeyboard(UP, delta_time);
+        camera.ProcessKeyboard(Camera_Movement::UP, delta_time);
     }
     if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS)
     {
-        camera.ProcessKeyboard(DOWN, delta_time);
+        camera.ProcessKeyboard(Camera_Movement::DOWN, delta_time);
     }
 }
 
