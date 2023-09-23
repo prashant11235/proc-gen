@@ -9,28 +9,30 @@
 
 #include "shader.h"
 
-class Skybox
-{
-public:
-    static Skybox* getInstance();
-    void draw(const glm::mat4&, const glm::mat4&);
+namespace proc_gen {
+    class Skybox
+    {
+    public:
+        static Skybox* getInstance();
+        void draw(const glm::mat4&, const glm::mat4&);
 
-private:
-    static Skybox* skybox_instance;
-    Skybox();
+    private:
+        static Skybox* skybox_instance;
+        Skybox();
 
-    void setupRender();
-    void loadCubemap();
+        void setupRender();
+        void loadCubemap();
 
-    unsigned int cube_map_texture;
+        unsigned int cube_map_texture;
 
-    Shader* skybox_shader_ptr;
+        Shader* skybox_shader_ptr;
 
-    unsigned int skybox_VAO, skybox_VBO;
+        unsigned int skybox_VAO, skybox_VBO;
 
-    std::vector<float> skybox_vertices;
-    std::vector<std::string> skybox_faces;
+        std::vector<float> skybox_vertices;
+        std::vector<std::string> skybox_faces;
 
-    const char* SKYBOX_VERTEX_SHADER = "skybox.vs";
-    const char* SKYBOX_FRAGMENT_SHADER = "skybox.fs";
-};
+        const char* SKYBOX_VERTEX_SHADER = "skybox.vs";
+        const char* SKYBOX_FRAGMENT_SHADER = "skybox.fs";
+    };
+}

@@ -2,15 +2,15 @@
 
 int main()
 {
-    int success = Window::getInstance()->init();
+    int success = proc_gen::Window::getInstance()->init();
     if (success == -1)
     {
         return -1;
     }
 
-    while (!Window::getInstance()->shouldClose())
+    while (!proc_gen::Window::getInstance()->shouldClose())
     {
-        Window::getInstance()->render();
+        proc_gen::Window::getInstance()->render();
     }
 
     return 0;
